@@ -71,4 +71,5 @@ int main()
     //拷贝输出图像数据至主机，并写入到本地
     cudaMemcpy(dstImg.data, pDstImgData, imgW*imgH*sizeof(uchar), cudaMemcpyDeviceToHost);
     imwrite("Thsis.jpg", dstImg);
+    CHECK(cudaDeviceReset());
 }  

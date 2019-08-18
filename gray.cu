@@ -28,7 +28,7 @@ __global__ void grayScale(uchar3 const *rgb ,unsigned char *gray, int width, int
 
 int main()
 {
-    cv::Mat src_img = cv::imread("../test.jpg");//imread()函数载入图像
+    cv::Mat src_img = cv::imread("../data/test.jpg");//imread()函数载入图像
     if(src_img.empty())
     {
         fprintf(stderr, "Can not load image\n");//如果读入图像失败，返回错误信息
@@ -54,8 +54,6 @@ int main()
     dim3 blocksPerGrid((imgW + threadsPerBlock.x - 1) / threadsPerBlock.x,
         (imgH + threadsPerBlock.y - 1) / threadsPerBlock.y);
 
-    //dim3 grid( (imgW + block.x - 1) / block.x, (imgH + block.y - 1) / block.y);
-
     grayScale <<<blocksPerGrid, threadsPerBlock>>> (deviceInputRGB, deviceInputGray, imgW, imgH);
     cudaThreadSynchronize();
     //拷贝输出图像数据至主机，并写入到本地
@@ -64,8 +62,5 @@ int main()
 
     imwrite("../Thsis.jpg", dst_img);
     CHECK(cudaDeviceReset());
-
-
-
     return 0;
 }
