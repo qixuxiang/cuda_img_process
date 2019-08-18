@@ -27,8 +27,8 @@ int main()
 {  
     //OpenCV读取两幅图像
     Mat img[2];
-    img[0]=imread("data/222.jpg", 0);
-    img[1]=imread("data/333.jpg", 0);
+    img[0]=imread("../data/222.jpg", 0);
+    img[1]=imread("../data/333.jpg", 0);
     int imgH=img[0].rows;
     int imgW=img[0].cols;
     //输出图像
@@ -70,6 +70,7 @@ int main()
 
     //拷贝输出图像数据至主机，并写入到本地
     cudaMemcpy(dstImg.data, pDstImgData, imgW*imgH*sizeof(uchar), cudaMemcpyDeviceToHost);
-    imwrite("Thsis.jpg", dstImg);
+    imwrite("../Thsis.jpg", dstImg);
     CHECK(cudaDeviceReset());
+    return 0;
 }  
