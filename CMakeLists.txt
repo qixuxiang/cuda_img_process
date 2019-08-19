@@ -8,6 +8,7 @@ FIND_PACKAGE(OpenCV REQUIRED)
 cuda_add_executable(combine_gray combine_gray.cu)
 cuda_add_executable(combine_rgb combine_rgb.cu)
 cuda_add_executable(gray gray.cu)
+cuda_add_executable(struct_test struct_pointer.cu)
 
 
 target_link_libraries(combine_gray ${OpenCV_LIBS})
