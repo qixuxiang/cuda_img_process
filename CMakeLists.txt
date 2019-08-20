@@ -9,7 +9,7 @@ cuda_add_executable(combine_gray combine_gray.cu)
 cuda_add_executable(combine_rgb combine_rgb.cu)
 cuda_add_executable(gray gray.cu)
 cuda_add_executable(struct_test struct_pointer.cu)
-
+cuda_add_executable(struct_array struct_array.cu)
 
 target_link_libraries(combine_gray ${OpenCV_LIBS})
 target_link_libraries(combine_rgb ${OpenCV_LIBS})
